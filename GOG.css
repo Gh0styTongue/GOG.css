@@ -1,0 +1,842 @@
+/*
+ * GOG.css
+ * A CSS library to style websites like GOG.com
+ * Based on the modern GOG.com theme.
+ *
+ * This file consolidates styles from multiple GOG stylesheets.
+ */
+
+/* ==========================================================================
+   1. Base Styles & Resets (from normalize.css and globals)
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+*:focus {
+    outline: none
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+main {
+    display: block
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible
+}
+
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em
+}
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted
+}
+
+b,
+strong {
+    font-weight: bolder
+}
+
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em
+}
+
+small {
+    font-size: 80%
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -.25em
+}
+
+sup {
+    top: -.5em
+}
+
+img {
+    border-style: none;
+    vertical-align: middle;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0
+}
+
+button,
+input {
+    overflow: visible
+}
+
+button,
+select {
+    text-transform: none
+}
+
+[type=button],
+[type=reset],
+[type=submit],
+button {
+    -webkit-appearance: button
+}
+
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner,
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0
+}
+
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring,
+button:-moz-focusring {
+    outline: 1px dotted ButtonText
+}
+
+fieldset {
+    padding: .35em .75em .625em
+}
+
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal
+}
+
+progress {
+    vertical-align: baseline
+}
+
+textarea {
+    overflow: auto
+}
+
+[type=checkbox],
+[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+[type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px
+}
+
+[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit
+}
+
+details {
+    display: block
+}
+
+summary {
+    display: list-item
+}
+
+[hidden],
+template {
+    display: none
+}
+
+
+/* ==========================================================================
+   2. Font Definitions (Lato GOG & Lato GOG Latin)
+   ========================================================================== */
+
+@font-face {
+    font-family: 'Lato GOG';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Black.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Black.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Black.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Black.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Black.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 900
+}
+
+@font-face {
+    font-family: 'Lato GOG';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-BlackItalic.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-BlackItalic.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-BlackItalic.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-BlackItalic.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-BlackItalic.ttf') format("truetype");
+    font-style: italic;
+    font-weight: 900
+}
+
+@font-face {
+    font-family: 'Lato GOG';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Bold.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Bold.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Bold.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Bold.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Bold.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 700
+}
+
+@font-face {
+    font-family: 'Lato GOG';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Regular.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Regular.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Regular.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Regular.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Regular.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'Lato GOG';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Light.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Light.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Light.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Light.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/lato/Lato-Light.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 300
+}
+
+
+@font-face {
+    font-family: 'Lato GOG Latin';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Black.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Black.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Black.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Black.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Black.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 900
+}
+
+@font-face {
+    font-family: 'Lato GOG Latin';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Bold.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Bold.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Bold.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Bold.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Bold.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 700
+}
+
+@font-face {
+    font-family: 'Lato GOG Latin';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Regular.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Regular.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Regular.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Regular.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Regular.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'Lato GOG Latin';
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Light.eot');
+    src: url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Light.eot?#iefix') format("embedded-opentype"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Light.woff2') format("woff2"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Light.woff') format("woff"), url('https://www.gog.com/bundles/gogwebsitecommon/fonts/latoLatin/LatoLatin-Light.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 300
+}
+
+/* ==========================================================================
+   3. Color & Theme Variables
+   ========================================================================== */
+:root {
+    /* Base Light Theme */
+    --c-background: rgb(217, 217, 217);
+    --c-accent: rgb(110, 29, 114);
+    --c-accent-supportive: rgb(78, 21, 81);
+    --c-accent-contrast: rgb(255, 255, 255);
+    --c-ui-primary: rgb(237, 237, 237);
+    --c-ui-primary--hover-lighten: #fafafa;
+    --c-ui-primary--active-lighten: white;
+    --c-ui-secondary: rgb(88, 88, 88);
+    --c-ui-tertiary: rgb(184, 184, 184);
+    --c-text-primary: rgb(33, 33, 33);
+    --c-text-secondary: rgb(64, 64, 64);
+    --c-text-tertiary: rgb(88, 88, 88);
+    --c-contrast: rgb(0, 0, 0);
+    --c-contrast-85: rgba(0, 0, 0, .85);
+    --c-contrast-20: rgba(0, 0, 0, .2);
+    --c-contrast-15: rgba(0, 0, 0, .15);
+    --c-contrast-10: rgba(0, 0, 0, .1);
+    --c-ui-hover: rgba(110, 29, 114, .7);
+
+    /* Light Theme Button Variables */
+    --sh-button-primary: 0 2px 4px var(--c-shadow-primary-15);
+    --gradient-button-primary-body: linear-gradient(180deg, rgb(181, 230, 60), rgb(140, 202, 39));
+    --gradient-button-primary-border: linear-gradient(180deg, rgb(197, 237, 73), rgb(124, 193, 20));
+    --gradient-button-primary-disabled: linear-gradient(180deg, rgba(181, 230, 60, .3), rgba(140, 202, 39, .3));
+    --c-button-primary-content: rgb(33, 33, 33);
+    --c-button-primary-pressed-body: rgb(140, 202, 39);
+    --c-button-primary-pressed-border: rgb(124, 193, 20);
+    --c-button-primary-disabled-content: rgba(33, 33, 33, .85);
+
+    --gradient-button-accent-body: linear-gradient(180deg, rgb(152, 46, 156), rgb(110, 29, 114));
+    --gradient-button-accent-border: linear-gradient(180deg, rgb(171, 58, 175), rgb(94, 13, 98));
+    --gradient-button-accent-disabled: linear-gradient( 180deg, rgba(152, 46, 156, .3), rgba(110, 29, 114, .3));
+    --c-button-accent-content: rgb(255, 255, 255);
+    --c-button-accent-pressed-body: rgb(110, 29, 114);
+    --c-button-accent-pressed-border: rgb(94, 13, 98);
+    --c-button-accent-disabled-content: rgba(0, 0, 0, .85);
+
+    --gradient-button-secondary-body: linear-gradient(180deg, rgb(242, 242, 242), rgb(237, 237, 237));
+    --gradient-button-secondary-border: linear-gradient(180deg, rgb(250, 250, 250), rgb(233, 233, 233));
+    --gradient-button-secondary-disabled: linear-gradient(180deg, rgba(242, 242, 242, .3), rgba(237, 237, 237, .3));
+    --c-button-secondary-content: rgb(33, 33, 33);
+    --c-button-secondary-pressed-body: rgb(237, 237, 237);
+    --c-button-secondary-pressed-border: rgb(233, 233, 233);
+    --c-button-secondary-disabled-content: rgba(33, 33, 33, .85);
+
+    /* Misc */
+    --c-shadow-primary-15: rgba(0, 0, 0, .15);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --c-background: rgb(33, 33, 33);
+        --c-accent: rgb(201, 154, 255);
+        --c-accent-supportive: rgb(179, 112, 255);
+        --c-accent-contrast: rgb(0, 0, 0);
+        --c-ui-primary: rgb(48, 48, 48);
+        --c-ui-primary--hover-lighten: #3d3d3d;
+        --c-ui-primary--active-lighten: #565656;
+        --c-ui-secondary: rgb(88, 88, 88);
+        --c-ui-tertiary: rgb(64, 64, 64);
+        --c-text-primary: rgb(242, 242, 242);
+        --c-text-secondary: rgb(237, 237, 237);
+        --c-text-tertiary: rgb(217, 217, 217);
+        --c-contrast: rgb(255, 255, 255);
+        --c-contrast-85: rgba(255, 255, 255, .85);
+        --c-contrast-20: rgba(255, 255, 255, .2);
+        --c-contrast-15: rgba(255, 255, 255, .15);
+        --c-contrast-10: rgba(255, 255, 255, .1);
+        --c-ui-hover: rgba(201, 154, 255, .7);
+        --c-button-primary-disabled-content: rgba(255, 255, 255, .85);
+        --gradient-button-accent-body: linear-gradient(180deg, rgb(214, 178, 255), rgb(201, 154, 255));
+        --gradient-button-accent-border: linear-gradient(180deg, rgb(225, 199, 255), rgb(197, 139, 255));
+        --gradient-button-accent-disabled: linear-gradient(180deg, rgba(214, 178, 255, .3), rgba(201, 154, 255, .3));
+        --c-button-accent-content: rgb(0, 0, 0);
+        --c-button-accent-pressed-body: rgb(201, 154, 255);
+        --c-button-accent-pressed-border: rgb(197, 139, 255);
+        --c-button-accent-disabled-content: rgba(255, 255, 255, .85);
+        --gradient-button-secondary-body: linear-gradient(180deg, rgb(107, 107, 107), rgb(88, 88, 88));
+        --gradient-button-secondary-border: linear-gradient(180deg, rgb(132, 132, 132), rgb(88, 88, 88));
+        --gradient-button-secondary-disabled: linear-gradient(180deg, rgba(242, 242, 242, .3), rgba(237, 237, 237, .3));
+        --c-button-secondary-content: rgb(255, 255, 255);
+        --c-button-secondary-pressed-body: rgb(88, 88, 88);
+        --c-button-secondary-pressed-border: rgb(64, 64, 64);
+        --c-button-secondary-disabled-content: rgba(255, 255, 255, .85);
+    }
+}
+
+html[data-theme^=dark] {
+    --c-background: rgb(33, 33, 33);
+    --c-accent: rgb(201, 154, 255);
+    --c-accent-supportive: rgb(179, 112, 255);
+    --c-accent-contrast: rgb(0, 0, 0);
+    --c-ui-primary: rgb(48, 48, 48);
+    --c-ui-primary--hover-lighten: #3d3d3d;
+    --c-ui-primary--active-lighten: #565656;
+    --c-ui-secondary: rgb(88, 88, 88);
+    --c-ui-tertiary: rgb(64, 64, 64);
+    --c-text-primary: rgb(242, 242, 242);
+    --c-text-secondary: rgb(237, 237, 237);
+    --c-text-tertiary: rgb(217, 217, 217);
+    --c-contrast: rgb(255, 255, 255);
+    --c-contrast-85: rgba(255, 255, 255, .85);
+    --c-contrast-20: rgba(255, 255, 255, .2);
+    --c-contrast-15: rgba(255, 255, 255, .15);
+    --c-contrast-10: rgba(255, 255, 255, .1);
+    --c-ui-hover: rgba(201, 154, 255, .7);
+    --c-button-primary-disabled-content: rgba(255, 255, 255, .85);
+    --gradient-button-accent-body: linear-gradient(180deg, rgb(214, 178, 255), rgb(201, 154, 255));
+    --gradient-button-accent-border: linear-gradient(180deg, rgb(225, 199, 255), rgb(197, 139, 255));
+    --gradient-button-accent-disabled: linear-gradient(180deg, rgba(214, 178, 255, .3), rgba(201, 154, 255, .3));
+    --c-button-accent-content: rgb(0, 0, 0);
+    --c-button-accent-pressed-body: rgb(201, 154, 255);
+    --c-button-accent-pressed-border: rgb(197, 139, 255);
+    --c-button-accent-disabled-content: rgba(255, 255, 255, .85);
+    --gradient-button-secondary-body: linear-gradient(180deg, rgb(107, 107, 107), rgb(88, 88, 88));
+    --gradient-button-secondary-border: linear-gradient(180deg, rgb(132, 132, 132), rgb(88, 88, 88));
+    --gradient-button-secondary-disabled: linear-gradient(180deg, rgba(242, 242, 242, .3), rgba(237, 237, 237, .3));
+    --c-button-secondary-content: rgb(255, 255, 255);
+    --c-button-secondary-pressed-body: rgb(88, 88, 88);
+    --c-button-secondary-pressed-border: rgb(64, 64, 64);
+    --c-button-secondary-disabled-content: rgba(255, 255, 255, .85);
+}
+
+
+/* ==========================================================================
+   4. Global Body & Layout Styles
+   ========================================================================== */
+
+body {
+    background: var(--c-background);
+    color: var(--c-text-primary);
+    font-family: 'Lato GOG Latin', 'Lato GOG', 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.gog-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1096px; /* A common max-width from the files */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (max-width: 736px) {
+    .gog-wrapper {
+        padding: 0 8px;
+    }
+}
+
+
+/* ==========================================================================
+   5. Buttons
+   ========================================================================== */
+
+.button,
+.button-secondary,
+.button-primary,
+.button-accent {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.125;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 16px 32px;
+    cursor: pointer;
+    filter: brightness(100%);
+    box-shadow: 0 2px 4px 0 var(--c-shadow-primary-15);
+    text-decoration: none;
+    transition: all .125s ease-out
+}
+
+.button:before,
+.button-secondary:before,
+.button-primary:before,
+.button-accent:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -1px;
+    border-radius: inherit
+}
+
+.button:not([disabled]):hover,
+.button-secondary:not([disabled]):hover,
+.button-primary:not([disabled]):hover,
+.button-accent:not([disabled]):hover {
+    filter: brightness(105%);
+    transition: filter .125s ease-out
+}
+
+.button:not([disabled]):active,
+.button-secondary:not([disabled]):active,
+.button-primary:not([disabled]):active,
+.button-accent:not([disabled]):active {
+    box-shadow: none
+}
+
+.button:not([disabled]):active:before,
+.button-secondary:not([disabled]):active:before,
+.button-primary:not([disabled]):active:before,
+.button-accent:not([disabled]):active:before {
+    display: none
+}
+
+.button[disabled],
+[disabled].button-secondary,
+[disabled].button-primary,
+[disabled].button-accent {
+    background: transparent;
+    box-shadow: none
+}
+
+.button[disabled]:after,
+[disabled].button-secondary:after,
+[disabled].button-primary:after,
+[disabled].button-accent:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -1px;
+    border-radius: inherit;
+    z-index: -2;
+    background: var(--c-background)
+}
+
+.button-accent {
+    background: var(--gradient-button-accent-body);
+    background-clip: padding-box;
+    color: var(--c-button-accent-content)
+}
+
+.button-accent:before {
+    background: var(--gradient-button-accent-border)
+}
+
+.button-accent:not([disabled]):active {
+    border: 1px solid var(--c-button-accent-pressed-border);
+    background: var(--c-button-accent-pressed-body)
+}
+
+.button-accent[disabled] {
+    box-shadow: none;
+    color: var(--c-button-accent-disabled-content)
+}
+
+.button-accent[disabled]:before {
+    background: var(--gradient-button-accent-disabled)
+}
+
+.button-primary {
+    background: var(--gradient-button-primary-body);
+    background-clip: padding-box;
+    color: var(--c-button-primary-content)
+}
+
+.button-primary:before {
+    background: var(--gradient-button-primary-border)
+}
+
+.button-primary:not([disabled]):active {
+    border: 1px solid var(--c-button-primary-pressed-border);
+    background: var(--c-button-primary-pressed-body)
+}
+
+.button-primary[disabled] {
+    box-shadow: none;
+    color: var(--c-button-primary-disabled-content)
+}
+
+.button-primary[disabled]:before {
+    background: var(--gradient-button-primary-disabled)
+}
+
+.button-secondary {
+    background: var(--gradient-button-secondary-body);
+    background-clip: padding-box;
+    color: var(--c-button-secondary-content)
+}
+
+.button-secondary:before {
+    background: var(--gradient-button-secondary-border)
+}
+
+.button-secondary:not([disabled]):active {
+    border: 1px solid var(--c-button-secondary-pressed-border);
+    background: var(--c-button-secondary-pressed-body)
+}
+
+.button-secondary[disabled] {
+    color: var(--c-button-secondary-disabled-content)
+}
+
+.button-secondary[disabled]:before {
+    background: var(--gradient-button-secondary-disabled)
+}
+
+/* ==========================================================================
+   6. Forms & Inputs
+   ========================================================================== */
+
+.checkbox__input {
+    border: 1px solid var(--c-ui-tertiary);
+    cursor: pointer
+}
+
+.checkbox__input[type=checkbox] {
+    display: inline-block;
+    align-self: flex-start;
+    position: relative;
+    margin: 3px 9px 0 0;
+    border-radius: 2px;
+    width: 16px;
+    min-width: 16px;
+    max-width: 16px;
+    height: 16px;
+    outline: 0;
+    background: var(--c-ui-primary);
+    transition: border-color .125s ease;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+.checkbox__input[type=checkbox]:before,
+.checkbox__input[type=checkbox]:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 3px;
+    background-color: transparent
+}
+
+.checkbox__input[type=checkbox]:before {
+    top: 8px;
+    left: 1px;
+    width: 5px;
+    height: 2px;
+    transform: rotate(35deg) scaleY(.8) translate(.75px) translateY(-.75px)
+}
+
+.checkbox__input[type=checkbox]:after {
+    top: 2px;
+    left: 7px;
+    width: 2px;
+    height: 9px;
+    transform: rotate(30deg) scaleX(.8) translate(.15px)
+}
+
+.checkbox__input[type=checkbox]:checked {
+    border-color: var(--c-accent-supportive);
+    background: var(--c-accent)
+}
+
+.checkbox__input[type=checkbox]:checked:before,
+.checkbox__input[type=checkbox]:checked:after {
+    background-color: var(--c-checkbox-tick-checked)
+}
+
+.checkbox__input[type=checkbox]:checked:active:before,
+.checkbox__input[type=checkbox]:checked:active:after {
+    background: var(--c-accent)
+}
+
+.checkbox__input[type=checkbox]:hover {
+    border-color: var(--c-ui-hover)
+}
+
+.checkbox__input[type=radio] {
+    margin-right: 8px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+.checkbox__input[type=radio]:hover {
+    border-color: var(--c-ui-hover)
+}
+
+.checkbox__input[type=radio]:focus {
+    border-color: var(--c-accent)
+}
+
+.checkbox__input[type=radio]:checked {
+    border-color: var(--c-accent-supportive);
+    cursor: default;
+    background: var(--c-accent)
+}
+
+.checkbox__input[type=radio]:checked:before {
+    content: "";
+    display: block;
+    margin: 4px;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--c-ui-primary)
+}
+
+/* ==========================================================================
+   7. Menus & Navigation (Simplified)
+   ========================================================================== */
+
+/* Note: Full menu recreation is complex. This is a simplified style guide. */
+.menu-item {
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 52px;
+}
+
+.menu-link {
+    display: block;
+    position: relative;
+    padding: 0 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #ccc; /* This is from the legacy files, but it's a good base */
+    letter-spacing: .25px;
+    text-decoration: none;
+}
+
+.menu-item.is-expanded .menu-link,
+.menu-link:hover {
+    color: #fff;
+}
+
+.menu-submenu {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    left: 1px;
+    top: 52px;
+    width: 230px;
+    padding: 8px 0;
+    color: var(--c-text-primary);
+    font-size: 13px;
+    line-height: normal;
+    background: var(--c-ui-primary);
+    transform-origin: 50% 0;
+    letter-spacing: normal;
+    cursor: default;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 0 15px 5px rgba(0,0,0,0.15);
+}
+
+.menu-item:hover .menu-submenu {
+    display: block;
+}
+
+.menu-submenu-link {
+    display: block;
+    position: relative;
+    padding: 5px 15px 5px 8px;
+    margin: 0 8px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: var(--c-text-primary);
+    text-decoration: none;
+}
+
+.menu-submenu-item:hover .menu-submenu-link {
+    color: var(--c-text-primary);
+    background: var(--c-ui-primary--hover-lighten);
+}
+
+/* ==========================================================================
+   8. Footer (Simplified)
+   ========================================================================== */
+
+.footer-microservice {
+    position: relative;
+    background: #262626;
+    font-size: 16px;
+    padding: 0;
+    color: #ccc;
+}
+
+.footer-microservice:after {
+    display: block;
+    width: 100%;
+    height: 4px;
+    content: '';
+    background: url("https://www.gog.com/assets/img/footer-border.jpg") center center;
+}
+.footer-microservice-mainlinks__link {
+    margin-right: 16px;
+    transition: color .2s;
+    color: #ddd;
+    line-height: 27px;
+}
+.footer-microservice-mainlinks__link:hover {
+    color:#fff;
+}
+
+/* ==========================================================================
+   9. Icons (Basic Setup)
+   ========================================================================== */
+   
+.icon-cart, .icon-checkmark, .icon-close, .icon-heart, .icon-magnifying-glass, .icon-windows, .icon-osx, .icon-linux {
+    display: inline-block;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    background: currentcolor;
+    width: 16px; /* default size */
+    height: 16px; /* default size */
+}
+
+.icon-cart {
+    -webkit-mask-image: url('https://www.gog.com/build/images/common/icons/cart.57c634417a443bf7.svg');
+    mask-image: url('https://www.gog.com/build/images/common/icons/cart.57c634417a443bf7.svg');
+}
+.icon-heart {
+    -webkit-mask-image: url('https://www.gog.com/build/images/common/icons/heart.8eae1c33518c3277.svg');
+    mask-image: url('https://www.gog.com/build/images/common/icons/heart.8eae1c33518c3277.svg');
+}
+.icon-magnifying-glass {
+    -webkit-mask-image: url('https://www.gog.com/build/images/common/icons/magnifying-glass.239036c77ae3e6bf.svg');
+    mask-image: url('https://www.gog.com/build/images/common/icons/magnifying-glass.239036c77ae3e6bf.svg');
+}
+.icon-windows {
+    -webkit-mask-image: url('https://www.gog.com/build/images/common/icons/platforms/windows.a611589c00e9d2b2.svg');
+    mask-image: url('https://www.gog.com/build/images/common/icons/platforms/windows.a611589c00e9d2b2.svg');
+}
+.icon-osx {
+    -webkit-mask-image: url('https://www.gog.com/build/images/common/icons/platforms/osx.bc4f3854eeaae05c.svg');
+    mask-image: url('https://www.gog.com/build/images/common/icons/platforms/osx.bc4f3854eeaae05c.svg');
+}
+.icon-linux {
+    -webkit-mask-image: url('https://www.gog.com/build/images/common/icons/platforms/linux.c9146a3a31458b07.svg');
+    mask-image: url('https://www.gog.com/build/images/common/icons/platforms/linux.c9146a3a31458b07.svg');
+}
